@@ -1,0 +1,42 @@
+html,
+body {
+    background: #808080;
+    color: black;
+    /* Spiral of fonts in case one doesn't load */
+    font-family: "Raleway", "Trebuchet", "sans-serif";
+}
+
+/* Navigation Bar */
+#navbar {
+    position: fixed;
+    background: #ffffff;
+    margin: 10px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    top: 0;
+    z-index: 5;
+    display: block;
+    text-align: center;
+    height: 100px;
+    transition: 0.5s;
+}
+
+#navbar a {
+    font-style: normal !important;
+    position: relative;
+    top: -23px;
+    color: black !important;
+    margin: 20px;
+    float: left;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    font-size: 25px;
+    opacity: 0.5;
+    transition: 0.65s;
+}
+
+#navbar a:hover {
+    opacity: 1;
+    font-size: 30px;
+    text-decoration: underline;
+}
