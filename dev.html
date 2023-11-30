@@ -2,16 +2,25 @@
 <html>
    <body>
       <script>
-         var password = "karsgamesdevportal";
-         (function passcodeprotect() {
-            var passcode = prompt("Enter Password to access this page! (Devolper Server)");
-  
-          while (passcode !== password) {
-               alert("Incorrect PassCode");
-               return passcodeprotect();
-            }
-         }());
-         alert('Access Granted');
+         // Note to Kar: I think we should encrypt this password using Crypto.JS
+         let password = "karsgamesdevportal";
+
+         // Create a promise that shall be fulfilled when the correct password has been entered.
+         function tryPassword() {
+            let passwordProtect = new Promise((resolve, reject) => {
+            let pass = prompt("Enter the Developer Portal password to access this page.");
+               await pass;
+               if(pass == password) {
+                  alert("Access Granted");
+                  resolve("Access Granted.");
+               } else {
+                  reject("Incorrect Password.");
+               }
+            }).catch(err => {
+               alert(err);
+               tryPassword();
+            });
+         }
       </script>
    </body>
   </body>
@@ -34,9 +43,9 @@
             Kar's Games Dev Portal
         </h1>
         <h2>
-            Welcome to the Kar's Games Dev Portal this is a private page so if you got here by mistake please return to the 
-            <a style="color: white !important;" href="index.html">home</a>
-            page.
+            Welcome to the Kar's Games Dev Portal. This page is exclusively for developers to test and debug the website and it's games.
+            <br>
+            If you are not a developer, please return to the <a style="color: white !important;" href="index.html">home</a> page.
         </h2
     </body>
 </html>
