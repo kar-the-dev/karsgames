@@ -28,7 +28,7 @@
          let password = "karsgamesdevportal";
 
          // Create a promise that shall be fulfilled when the correct password has been entered.
-         function tryPassword() {
+         async function tryPassword() {
             let passwordProtect = new Promise((resolve, reject) => {
             let pass = prompt("Enter the Developer Portal password to access this page.");
                await pass;
