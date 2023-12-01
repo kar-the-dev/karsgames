@@ -1,9 +1,0 @@
-/* Makes every paragraph start with indentation, and predetermines the font-size. */
-#info p {
-    text-indent: 30px;
-    font-size: 30px;
-}
-
-#team-info a {
-    color: white !important;
-}
