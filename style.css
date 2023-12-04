@@ -46,3 +46,11 @@ nav a {
   color: white !important;
   text-decoration: none !important;
 }
+
+#cookie-acceptance {
+  position: fixed !important;
+  top: 100%;
+  z-index: 1000 !important;
+  margin: 100px;
+  
+}
