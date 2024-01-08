@@ -21,10 +21,7 @@
 
     <script>
         function translate() {
-            // Get the input value and convert to uppercase
             var englishText = document.getElementById("englishInput").value.toUpperCase();
-
-            // Define the translations
             var translations = {
                 'A': '@',
                 'B': '∞ (alt 1004)',
@@ -51,11 +48,11 @@
                 'W': '~',
                 'X': '8'
             };
-
-            // Translate each character in the input text
-            var translatedText = englishText.split('').map(char => translations[char] || char).join('');
-
-            // Display the translation
+            var translatedText = '';
+            for (var i = 0; i < englishText.length; i++) {
+                var char = englishText[i];
+                translatedText += translations[char] || char;
+            }
             document.getElementById("translationOutput").innerText = "Translation: " + translatedText;
         }
     </script>
