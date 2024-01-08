@@ -16,11 +16,11 @@
     <h1>Custom Translator</h1>
     <label for="englishInput">Enter English text:</label>
     <input type="text" id="englishInput" placeholder="English text...">
-    <button onclick="translate()">Translate</button>
+    <button onclick="performTranslation()">Translate</button>
     <p id="translationOutput">Translation: </p>
 
     <script>
-        function translate() {
+        function performTranslation() {
             var englishText = document.getElementById("englishInput").value.toUpperCase();
             var translations = {
                 'A': '@',
