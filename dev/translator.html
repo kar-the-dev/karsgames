@@ -1,22 +1,67 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>English to Hiddenees</title>
-  <link href="test.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="container">
-    <textarea name="" id="input" cols="30" rows="10" class="input" placeholder="English"></textarea>
-    <div id="output" class="output">
-      <span style="color:lightslategray;">Hiddenees</span>
-    </div>
-  </div>
-  <script src="script.js"></script>
-  <script src="translations.js"></script>
-</body>
+    <h1>Custom Translator</h1>
+    <label for="englishInput">Enter English text:</label>
+    <input type="text" id="englishInput" placeholder="English text...">
+    <button onclick="translate()">Translate</button>
+    <p id="translationOutput">Translation: </p>
 
+    <script>
+        function translate() {
+            // Get the input value
+            var englishText = document.getElementById("englishInput").value.toUpperCase();
+
+            // Define the translations
+            var translations = {
+                'A': '@',
+                'B': '∞ (alt 1004)',
+                'C': '☺ (alt 1)',
+                'D': '|)',
+                'E': 'ε (alt 1006)',
+                'F': '-',
+                'G': 'gg',
+                'H': '|-|',
+                'I': '!',
+                'J': '//',
+                'K': '|/',
+                'L': '|',
+                'M': '|\\/|',
+                'N': '∩ (alt 1007)',
+                'O': 'Φ (alt 1,000)',
+                'P': '¶ (alt 20)',
+                'Q': 'δ (alt 1,003)',
+                'R': '💀',
+                'S': '$',
+                'T': '+',
+                'U': 'C',
+                'V': '^',
+                'W': '~',
+                'X': '8'
+            };
+
+            // Translate each character in the input text
+            var translatedText = '';
+            for (var i = 0; i < englishText.length; i++) {
+                var char = englishText[i];
+                translatedText += translations[char] || char; // If the translation is not found, keep the original character
+            }
+
+            // Display the translation
+            document.getElementById("translationOutput").innerText = "Translation: " + translatedText;
+        }
+    </script>
+</body>
 </html>
