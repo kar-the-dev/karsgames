@@ -53,11 +53,7 @@
             };
 
             // Translate each character in the input text
-            var translatedText = '';
-            for (var i = 0; i < englishText.length; i++) {
-                var char = englishText[i];
-                translatedText += translations[char] || char; // If the translation is not found, keep the original character
-            }
+            var translatedText = englishText.split('').map(char => translations[char] || char).join('');
 
             // Display the translation
             document.getElementById("translationOutput").innerText = "Translation: " + translatedText;
