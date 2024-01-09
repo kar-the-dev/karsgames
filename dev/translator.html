@@ -14,15 +14,102 @@
 </head>
 <body>
     <h1>Hiddenees Translator (BETA Bugs may occur)</h1>
-    <label for="textToTranslate">Enter text to translate:</label>
-    <input type="text" id="textToTranslate" placeholder="Text to translate...">
-    <button onclick="translateToCustom()">Translate to Hiddenees</button>
-    <button onclick="translateToEnglish()">Translate to English</button>
-    <p id="translationOutput">Translation: </p>
+    
+    <!-- User Registration Form -->
+    <div id="registrationForm">
+        <label for="newUsername">Username:</label>
+        <input type="text" id="newUsername" placeholder="Choose a username">
+        <br>
+        <label for="newPassword">Password:</label>
+        <input type="password" id="newPassword" placeholder="Choose a password">
+        <br>
+        <button onclick="register()">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginForm" style="display: none;">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Your username">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Your password">
+        <br>
+        <button onclick="login()">Login</button>
+    </div>
+
+    <!-- Translator Section (hidden by default until login) -->
+    <div id="translator" style="display: none;">
+        <label for="textToTranslate">Enter text to translate:</label>
+        <input type="text" id="textToTranslate" placeholder="Text to translate...">
+        <button onclick="translateToCustom()">Translate to Hiddenees</button>
+        <button onclick="translateToEnglish()">Translate to English</button>
+        <p id="translationOutput">Translation: </p>
+    </div>
 
     <script>
+        var loggedIn = false;
+
+        function register() {
+            var newUsername = document.getElementById("newUsername").value;
+            var newPassword = document.getElementById("newPassword").value;
+
+            // Placeholder for server-side registration logic
+            // This is where you would communicate with the server to create a new user
+            // For simplicity, we assume the registration is successful without actual server interaction
+            alert("Registration successful. You can now log in.");
+            document.getElementById("registrationForm").style.display = "none";
+            document.getElementById("loginForm").style.display = "block";
+        }
+
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Placeholder for server-side login logic
+            // This is where you would communicate with the server to validate the user
+            // For simplicity, we assume the login is successful without actual server interaction
+            loggedIn = true;
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("translator").style.display = "block";
+        }
+
         var toCustomTranslations = {
-            // ... (unchanged)
+            'A': '@',
+            'B': '∞',
+            'C': '☺',
+            'D': '|)',
+            'E': 'ε',
+            'F': '-',
+            'G': 'gg',
+            'H': '|-|',
+            'I': '!',
+            'J': '//',
+            'K': '|/',
+            'L': '|',
+            'M': '|\/|',
+            'N': '∩',
+            'O': 'Φ',
+            'P': '¶', 
+            'Q': 'δ',
+            'R': '&#128128;',
+            'S': '$',
+            'T': '+',
+            'U': 'C',
+            'V': '^',
+            'W': '~',
+            'X': '8',
+            'Y': ':',
+            'Z': '≥',
+            '1': 'i',
+            '2': 'दो',
+            '3': 'три',
+            '4': '⩏',
+            '5': '鼊',
+            '6': 'প',
+            '7': '=ྏ',
+            '8': '蒯',
+            '9': '৺',
+            '0': '辄'
         };
 
         var toEnglishTranslations = {};
@@ -31,32 +118,23 @@
             toEnglishTranslations[toCustomTranslations[key]] = key;
         }
 
-        var cussWords = ['nigga', 'nigger', 'faggot', 'fagot']; // Add your cuss words here
-        var bannedUsers = ['user1', 'user2']; // Add banned users here
-
         function translateToCustom() {
-            var textToTranslate = document.getElementById("textToTranslate").value.toUpperCase();
-            var isCussWord = checkForCussWords(textToTranslate);
-            var isBannedUser = checkForBannedUsers(textToTranslate);
-            
-            if (isCussWord || isBannedUser) {
-                document.getElementById("translationOutput").innerText = "You are not allowed to use offensive language or you are banned!";
-            } else {
+            if (loggedIn) {
+                var textToTranslate = document.getElementById("textToTranslate").value.toUpperCase();
                 var translatedText = translateText(textToTranslate, toCustomTranslations);
                 document.getElementById("translationOutput").innerText = "Translation: " + translatedText;
+            } else {
+                alert("Please log in to use the translator.");
             }
         }
 
         function translateToEnglish() {
-            var textToTranslate = document.getElementById("textToTranslate").value.toUpperCase();
-            var isCussWord = checkForCussWords(textToTranslate);
-            var isBannedUser = checkForBannedUsers(textToTranslate);
-            
-            if (isCussWord || isBannedUser) {
-                document.getElementById("translationOutput").innerText = "You are not allowed to use offensive language or you are banned!";
-            } else {
+            if (loggedIn) {
+                var textToTranslate = document.getElementById("textToTranslate").value.toUpperCase();
                 var translatedText = translateText(textToTranslate, toEnglishTranslations);
                 document.getElementById("translationOutput").innerText = "Translation: " + translatedText;
+            } else {
+                alert("Please log in to use the translator.");
             }
         }
 
@@ -68,24 +146,7 @@
             }
             return translatedText;
         }
-
-        function checkForCussWords(text) {
-            for (var i = 0; i < cussWords.length; i++) {
-                if (text.includes(cussWords[i].toUpperCase())) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        function checkForBannedUsers(text) {
-            for (var i = 0; i < bannedUsers.length; i++) {
-                if (text.includes(bannedUsers[i].toUpperCase())) {
-                    return true;
-                }
-            }
-            return false;
-        }
     </script>
 </body>
 </html>
+
