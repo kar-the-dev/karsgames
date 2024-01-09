@@ -14,46 +14,65 @@
 </head>
 <body>
     <h1>Custom Translator</h1>
-    <label for="englishInput">Enter English text:</label>
-    <input type="text" id="englishInput" placeholder="English text...">
-    <button onclick="performTranslation()">Translate</button>
+    <label for="textToTranslate">Enter text to translate:</label>
+    <input type="text" id="textToTranslate" placeholder="Text to translate...">
+    <button onclick="translateToCustom()">Translate to Custom</button>
+    <button onclick="translateToEnglish()">Translate to English</button>
     <p id="translationOutput">Translation: </p>
 
     <script>
-        function performTranslation() {
-            var englishText = document.getElementById("englishInput").value.toUpperCase();
-            var translations = {
-                'A': '@',
-                'B': '∞',
-                'C': '☺',
-                'D': '|)',
-                'E': 'ε',
-                'F': '-',
-                'G': 'gg',
-                'H': '|-|',
-                'I': '!',
-                'J': '//',
-                'K': '|/',
-                'L': '|',
-                'M': '|\/|',
-                'N': '∩',
-                'O': 'Φ',
-                'P': '¶',
-                'Q': 'δ',
-                'R': '💀',
-                'S': '$',
-                'T': '+',
-                'U': 'C',
-                'V': '^',
-                'W': '~',
-                'X': '8'
-            };
-            var translatedText = '';
-            for (var i = 0; i < englishText.length; i++) {
-                var char = englishText[i];
-                translatedText += translations[char] || char;
-            }
+        var toCustomTranslations = {
+            'A': '@',
+            'B': '∞ (alt 1004)',
+            'C': '☺ (alt 1)',
+            'D': '|)',
+            'E': 'ε (alt 1006)',
+            'F': '-',
+            'G': 'gg',
+            'H': '|-|',
+            'I': '!',
+            'J': '//',
+            'K': '|/',
+            'L': '|',
+            'M': '|\\/|',
+            'N': '∩ (alt 1007)',
+            'O': 'Φ (alt 1,000)',
+            'P': '¶ (alt 20)',
+            'Q': 'δ (alt 1,003)',
+            'R': '💀',
+            'S': '$',
+            'T': '+',
+            'U': 'C',
+            'V': '^',
+            'W': '~',
+            'X': '8'
+        };
+
+        var toEnglishTranslations = {};
+        // Create the reverse translation mapping
+        for (var key in toCustomTranslations) {
+            toEnglishTranslations[toCustomTranslations[key]] = key;
+        }
+
+        function translateToCustom() {
+            var textToTranslate = document.getElementById("textToTranslate").value.toUpperCase();
+            var translatedText = translateText(textToTranslate, toCustomTranslations);
             document.getElementById("translationOutput").innerText = "Translation: " + translatedText;
+        }
+
+        function translateToEnglish() {
+            var textToTranslate = document.getElementById("textToTranslate").value.toUpperCase();
+            var translatedText = translateText(textToTranslate, toEnglishTranslations);
+            document.getElementById("translationOutput").innerText = "Translation: " + translatedText;
+        }
+
+        function translateText(text, translationMap) {
+            var translatedText = '';
+            for (var i = 0; i < text.length; i++) {
+                var char = text[i];
+                translatedText += translationMap[char] || char;
+            }
+            return translatedText;
         }
     </script>
 </body>
