@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiddenees Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hiddenees Translator (BATA May have bugs won't be on website officially until we have everything working)</h1>
+    <label for="textToTranslate">Enter text to translate:</label>
+    <input type="text" id="textToTranslate" placeholder="Text to translate...">
+    <button onclick="translateToCustom()">Translate to Hiddenees</button>
+    <button onclick="translateToEnglish()">Translate to English</button>
+    <p id="translationOutput">Translation: </p>
+
+    <script>
+        var toCustomTranslations = {
+            'A': '@',
+            'B': '∞',
+            'C': '☺',
+            'D': '|)',
+            'E': 'ε',
+            'F': '-',
+            'G': 'gg',
+            'H': '|-|',
+            'I': '!',
+            'J': '//',
+            'K': '|/',
+            'L': '|',
+            'M': '|\/|',
+            'N': '∩',
+            'O': 'Φ',
+            'P': '¶',
+            'Q': 'δ',
+            'R': '💀', // 💀
+            'S': '$',
+            'T': '+',
+            'U': 'C',
+            'V': '^',
+            'W': '~',
+            'X': '8',
+            'Y': ':',
+            'Z': '≥',
+            '1': 'i',
+            '2': 'दो',
+            '3': 'три',
+            '4': '⩏',
+            '5': '鼊',
+            '6': 'প',
+            '7': '=ྏ',
+            '8': '蒯',
+            '9': '৺',
+            '0': '辄',
+            ' ': ' '
+        };
+
+        var toEnglishTranslations = {};
+        // Create the reverse translation mapping
+        for (var key in toCustomTranslations) {
+            toEnglishTranslations[toCustomTranslations[key]] = key;
+        }
+
+        function translateToCustom() {
+            var textToTranslate = document.getElementById("textToTranslate").value.toUpperCase();
+            var translatedText = translateText(textToTranslate, toCustomTranslations);
+            document.getElementById("translationOutput").innerText = "Translation: " + translatedText;
+        }
+
+        function translateToEnglish() {
+            var textToTranslate = document.getElementById("textToTranslate").value.toUpperCase();
+            var translatedText = translateText(textToTranslate, toEnglishTranslations);
+            document.getElementById("translationOutput").innerText = "Translation: " + translatedText;
+        }
+
+        function translateText(text, translationMap) {
+            var translatedText = '';
+            for (var i = 0; i < text.length; i++) {
+                var char = text[i];
+                translatedText += translationMap[char] || char;
+            }
+            return translatedText;
+        }
+    </script>
+</body>
+</html>
