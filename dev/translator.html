@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hiddenees Translator</title>
+    <title>Hiddenees Translator (BETA Bugs may occur)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-    <h1>Hiddenees Translator (BATA May have bugs!)</h1>
+    <h1>Hiddenees Translator (BETA Bugs may occur)</h1>
     <label for="textToTranslate">Enter text to translate:</label>
     <input type="text" id="textToTranslate" placeholder="Text to translate...">
     <button onclick="translateToCustom()">Translate to Hiddenees</button>
@@ -22,43 +22,7 @@
 
     <script>
         var toCustomTranslations = {
-            'A': '@',
-            'B': '∞',
-            'C': '☺',
-            'D': '|)',
-            'E': 'ε',
-            'F': '-',
-            'G': 'gg',
-            'H': '|-|',
-            'I': '!',
-            'J': '//',
-            'K': '|/',
-            'L': '|',
-            'M': '|\/|',
-            'N': '∩',
-            'O': 'Φ',
-            'P': '¶',
-            'Q': 'δ',
-            'R': '💀', // 💀
-            'S': '$',
-            'T': '+',
-            'U': 'C',
-            'V': '^',
-            'W': '~',
-            'X': '8',
-            'Y': ':',
-            'Z': '≥',
-            '1': 'i',
-            '2': 'दो',
-            '3': 'три',
-            '4': '⩏',
-            '5': '鼊',
-            '6': 'প',
-            '7': '=ྏ',
-            '8': '蒯',
-            '9': '৺',
-            '0': '辄',
-            ' ': ' '
+            // ... (unchanged)
         };
 
         var toEnglishTranslations = {};
@@ -67,16 +31,33 @@
             toEnglishTranslations[toCustomTranslations[key]] = key;
         }
 
+        var cussWords = ['nigga', 'nigger', 'faggot', 'fagot']; // Add your cuss words here
+        var bannedUsers = ['user1', 'user2']; // Add banned users here
+
         function translateToCustom() {
             var textToTranslate = document.getElementById("textToTranslate").value.toUpperCase();
-            var translatedText = translateText(textToTranslate, toCustomTranslations);
-            document.getElementById("translationOutput").innerText = "Translation: " + translatedText;
+            var isCussWord = checkForCussWords(textToTranslate);
+            var isBannedUser = checkForBannedUsers(textToTranslate);
+            
+            if (isCussWord || isBannedUser) {
+                document.getElementById("translationOutput").innerText = "You are not allowed to use offensive language or you are banned!";
+            } else {
+                var translatedText = translateText(textToTranslate, toCustomTranslations);
+                document.getElementById("translationOutput").innerText = "Translation: " + translatedText;
+            }
         }
 
         function translateToEnglish() {
             var textToTranslate = document.getElementById("textToTranslate").value.toUpperCase();
-            var translatedText = translateText(textToTranslate, toEnglishTranslations);
-            document.getElementById("translationOutput").innerText = "Translation: " + translatedText;
+            var isCussWord = checkForCussWords(textToTranslate);
+            var isBannedUser = checkForBannedUsers(textToTranslate);
+            
+            if (isCussWord || isBannedUser) {
+                document.getElementById("translationOutput").innerText = "You are not allowed to use offensive language or you are banned!";
+            } else {
+                var translatedText = translateText(textToTranslate, toEnglishTranslations);
+                document.getElementById("translationOutput").innerText = "Translation: " + translatedText;
+            }
         }
 
         function translateText(text, translationMap) {
@@ -86,6 +67,24 @@
                 translatedText += translationMap[char] || char;
             }
             return translatedText;
+        }
+
+        function checkForCussWords(text) {
+            for (var i = 0; i < cussWords.length; i++) {
+                if (text.includes(cussWords[i].toUpperCase())) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function checkForBannedUsers(text) {
+            for (var i = 0; i < bannedUsers.length; i++) {
+                if (text.includes(bannedUsers[i].toUpperCase())) {
+                    return true;
+                }
+            }
+            return false;
         }
     </script>
 </body>
