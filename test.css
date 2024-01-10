@@ -10,8 +10,8 @@ html{
   overflow-x:none;
   box-shadow: 0 4px 8px 0 #00000007, 0 6px 15px 0 #0000001a;
   margin-top:7.3%;
-  height:70vh;
-  background:#f2f2f2;
+  height:100vh;
+  background:black;
   width:25%;
   margin-left:37.5%;
   align-content:center;
@@ -19,11 +19,12 @@ html{
   border-radius:12px;
 }
 h1{
+  color: white;
   margin:30px;
   padding-top:30px;
 }
 .secondary-text{
-  color: #9f2dde;
+  color: white;
 }
 input{
   border-radius:3px;
