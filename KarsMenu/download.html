@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Kars Mod Menu is a W">
+        <meta name="keywords" content="Gorilla Tag Mods, PC Mods, Gorilla Tag PC Mods, Gorilla Tag Quest Mods">
+        <meta name="author" content="Kar">
+        <link rel="icon" type="image/icon-x" href="/favicon.ico">
+        <link rel="stylesheet" href="/css/style.css">
+        <title>Kar</title>
+    </head>    
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#faq-section">FAQ</a></li>
+                <li><a href="#credits-section">Credits</a></li>
+                <li><a href="#download-section">Download</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div id="overlay"></div>
+    <section id="download-section" class="download-section">
+        <div class="blur-background"></div>
+        <div class="download-container">
+            <img src="/images/logo.png" alt="Inky Logo">
+            <a href="https://github.com/MooManisLoud/inkytest/raw/main/Inky_Setup.exe" class="download-button" target="_blank">Download Kars Menu</a>
+            <a class="download-button" target="_blank" onclick="showPopup()">Download Kars Menu</a>
+        </div>
+    </section>  
+
+    <section id="faq-section" class="section">
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">Why use Kars Menu?<span> +</span></button>
+                <div class="faq-answer">
+                    <p>Placeholder</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section"><h1 style="text-align: center;">Kars Menu Team</h1></div>
+
+    <section id="credits-section" class="credits">
+        <div class="credits">
+            <div class="credits-item">
+                <div class="credits-blur"></div>
+                <img src="https://cdn.discordapp.com/avatars/735668954214694912/ba70c0412db5a431366c5381d5f882fa.png?size=1024" alt="Kars PFP">
+                <p>Kar</p>
+                <p>Owner of Kar's Menu and Lead Dev</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/index.js"></script>
+
+    <script>
+        function showPopup() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+        }
+    
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
