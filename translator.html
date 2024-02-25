@@ -11,101 +11,14 @@
 <body>
     <div class="alert">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span><strong>Warning!</strong> The translator will soon be shutdown! (Mar 8th 2024)
-    </div>                                                                                                                                                                                                                                            `
-    <h1>Hiddenees Translator (BETA Bugs may occur)</h1>
-    <label for="textToTranslate">Enter text to translate:</label>
-    <input type="text" id="textToTranslate" placeholder="Text to translate...">
-    <button onclick="translateToCustom()">Translate to Hiddenees</button>
-    <button onclick="translateToEnglish()">Translate to English</button>
-    <p id="translationOutput">Translation: </p>
+        </div>                                                                                                                                                                                                                                            `
+        <h1>Hiddenees Translator (BETA Bugs may occur)</h1>
+        <label for="textToTranslate">Enter text to translate:</label>
+        <input type="text" id="textToTranslate" placeholder="Text to translate...">
+        <button onclick="translateToCustom()">Translate to Hiddenees</button>
+        <button onclick="translateToEnglish()">Translate to English</button>
+        <p id="translationOutput">Translation: </p>
 
-    <script>
-        var toCustomTranslations = {
-            'A': '@',
-            'B': '∞',
-            'C': '☺',
-            'D': ')',
-            'E': 'ε',
-            'F': '-',
-            'G': 'gg',
-            'H': '☼',
-            'I': '!',
-            'J': '?',
-            'K': ';',
-            'L': '!_',
-            'M': '!-!',
-            'N': '∩',
-            'O': 'Φ',
-            'P': '¶', 
-            'Q': 'δ',
-            'R': '#',
-            'S': '$',
-            'T': '+',
-            'U': 'C',
-            'V': '^',
-            'W': '~',
-            'X': '8',
-            'Y': ':',
-            'Z': '≥',
-            '1': '`',
-            '2': 'दो',
-            '3': 'три',
-            '4': '⩏',
-            '5': '鼊',
-            '6': 'প',
-            '7': '=ྏ',
-            '8': '蒯',
-            '9': '৺',
-            '0': '辄'
-        };
-
-        var toEnglishTranslations = {};
-        // Create the reverse translation mapping
-        for (var key in toCustomTranslations) {
-            toEnglishTranslations[toCustomTranslations[key]] = key;
-        }
-
-        var cussWords = ['nigga', 'nigger', 'faggot', 'fagot', 'test2024']; // Add your cuss words here
-
-        function translateToCustom() {
-            var textToTranslate = document.getElementById("textToTranslate").value.toUpperCase();
-            var isCussWord = checkForCussWords(textToTranslate);
-            if (!isCussWord) {
-                var translatedText = translateText(textToTranslate, toCustomTranslations);
-                document.getElementById("translationOutput").innerText = "Translation: " + translatedText;
-            } else {
-                document.getElementById("translationOutput").innerText = "Woah there come down jonny don't say that it is very offesive and violent! https://www.youtube.com/watch?v=qQMsLAIqtmU";
-            }
-        }
-
-        function translateToEnglish() {
-            var textToTranslate = document.getElementById("textToTranslate").value.toUpperCase();
-            var isCussWord = checkForCussWords(textToTranslate);
-            if (!isCussWord) {
-                var translatedText = translateText(textToTranslate, toEnglishTranslations);
-                document.getElementById("translationOutput").innerText = "Translation: " + translatedText;
-            } else {
-                document.getElementById("translationOutput").innerText = "Woah there come down jonny don't say that it is very offesive and violent! https://www.youtube.com/watch?v=qQMsLAIqtmU";
-            }
-        }
-
-        function translateText(text, translationMap) {
-            var translatedText = '';
-            for (var i = 0; i < text.length; i++) {
-                var char = text[i];
-                translatedText += translationMap[char] || char;
-            }
-            return translatedText;
-        }
-
-        function checkForCussWords(text) {
-            for (var i = 0; i < cussWords.length; i++) {
-                if (text.includes(cussWords[i].toUpperCase())) {
-                    return true;
-                }
-            }
-            return false;
-        }
-    </script>
-</body>
+        <script src="translatorscript.js"></script>
+    </body>
 </html>
